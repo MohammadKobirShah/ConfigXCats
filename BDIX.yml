@@ -1,8 +1,24 @@
+# FlClash PC Configuration - BDIX Proxies
 mixed-port: 7890
 allow-lan: false
 mode: rule
 log-level: info
 external-controller: 127.0.0.1:9090
+ipv6: false
+
+# DNS Configuration (Recommended for better performance)
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+    - 208.67.222.222
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
 
 proxies:
   - name: "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 1 -FTP[ShowTime, FtpBD]"
@@ -852,6 +868,7 @@ proxy-groups:
   - name: "🚀 Proxy"
     type: select
     proxies:
+      - "♻️ Auto"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 1 -FTP[ShowTime, FtpBD]"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 2 -FTP[ShowTime, FtpBD]"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 3 -FTP[SamFTP, ShowTime, FtpBD]"
@@ -983,14 +1000,20 @@ proxy-groups:
 
   - name: "♻️ Auto"
     type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
     proxies:
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 1 -FTP[ShowTime, FtpBD]"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 2 -FTP[ShowTime, FtpBD]"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 3 -FTP[SamFTP, ShowTime, FtpBD]"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 4 -FTP[SamFTP, ShowTime, FtpBD, EBox, TimePassBD, Discovery, CloudTV, IccFTP]"
       - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 5 -FTP[SamFTP, ShowTime, FtpBD]"
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
+      - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 6 -FTP[SamFTP, ShowTime, FtpBD, EBox, TimePassBD, Discovery, CloudTV, IccFTP]"
+      - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 7 -FTP[CircleFTP]"
+      - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 8 -FTP[CircleFTP]"
+      - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 9 -FTP[SamFTP, FtpBD, IccFTP]"
+      - "🌬️ 𝙴𝚡𝚙𝚎𝚛𝚒𝚖𝚎𝚗𝚝 𝙲𝚊𝚝𝚜 10 -FTP[ShowTime, FtpBD, IccFTP]"
 
   - name: "🎯 Direct"
     type: select
